@@ -1,0 +1,324 @@
+@import "tailwindcss";
+
+@theme {
+  --color-factory-blue: #1e3a8a;
+  --color-factory-orange: #f97316;
+  --color-factory-gray: #f3f4f6;
+  --font-inter: "Inter", system-ui, sans-serif;
+}
+
+:root {
+  font-family: var(--font-inter);
+}
+
+body {
+  background-color: var(--color-factory-gray);
+  color: #0f172a; /* Slate 900 */
+}
+
+/* Custom styles for the ERP dashboard */
+.glass-card {
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  border-width: 1px;
+  border-color: #f1f5f9; /* Slate 100 */
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+  border-bottom: 2px solid transparent;
+  opacity: 0.7;
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.nav-link.active {
+  opacity: 1;
+  border-bottom-color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Print styles for PDF Export */
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 10mm;
+  }
+  
+  body {
+    background: white !important;
+  }
+  
+  header, footer, button, .no-print {
+    display: none !important;
+  }
+  
+  #app {
+    display: block !important;
+  }
+  
+  #main-content {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+  }
+  
+  .glass-card {
+    box-shadow: none !important;
+    border: 1px solid #e2e8f0 !important;
+    break-inside: avoid;
+    margin-bottom: 1rem;
+  }
+  
+  canvas {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+}
+
+/* Auth System Styles */
+:root {
+  --auth-primary: #4f46e5;
+  --auth-primary-hover: #4338ca;
+  --auth-bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --auth-surface: #ffffff;
+  --auth-text-main: #1f2937;
+  --auth-text-muted: #6b7280;
+  --auth-border: #e5e7eb;
+  --auth-input-focus: #4f46e533;
+  --auth-error: #ef4444;
+  --auth-success: #10b981;
+  --auth-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  --auth-radius: 12px;
+}
+
+body.auth-page {
+  background: var(--auth-bg-gradient);
+  min-height: 100vh;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.auth-container {
+  width: 100%;
+  max-width: 420px;
+  animation: authFadeIn 0.5s ease-out;
+}
+
+.auth-card {
+  background: var(--auth-surface);
+  padding: 40px;
+  border-radius: var(--auth-radius);
+  box-shadow: var(--auth-shadow);
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.auth-header h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--auth-text-main);
+  margin-bottom: 8px;
+}
+
+.auth-header p {
+  color: var(--auth-text-muted);
+  font-size: 14px;
+}
+
+.auth-form-group {
+  margin-bottom: 20px;
+}
+
+.auth-form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--auth-text-main);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.auth-input-container {
+  position: relative;
+}
+
+.auth-input-field {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--auth-border);
+  border-radius: 8px;
+  font-size: 15px;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.auth-input-field:focus {
+  border-color: var(--auth-primary);
+  box-shadow: 0 0 0 3px var(--auth-input-focus);
+}
+
+.auth-password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: var(--auth-text-muted);
+  background: none;
+  border: none;
+  padding: 4px;
+}
+
+.auth-form-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+
+.auth-checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.auth-link {
+  color: var(--auth-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}
+
+.auth-btn-primary {
+  width: 100%;
+  padding: 12px;
+  background: var(--auth-primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.auth-btn-primary:hover {
+  background: var(--auth-primary-hover);
+  transform: translateY(-1px);
+}
+
+.auth-btn-primary:active {
+  transform: translateY(0);
+}
+
+.auth-btn-primary:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.auth-social-login {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--auth-border);
+}
+
+.auth-btn-google {
+  width: 100%;
+  padding: 11px;
+  background: white;
+  border: 1px solid var(--auth-border);
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--auth-text-main);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background 0.2s;
+}
+
+.auth-btn-google:hover {
+  background: #f9fafb;
+}
+
+.auth-footer-text {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 14px;
+  color: var(--auth-text-muted);
+}
+
+.auth-error-msg {
+  color: var(--auth-error);
+  font-size: 12px;
+  margin-top: 4px;
+  display: none;
+}
+
+.auth-success-msg {
+  background: #ecfdf5;
+  color: var(--auth-success);
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  border: 1px solid #d1fae5;
+  display: none;
+}
+
+.auth-spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: authSpin 0.8s linear infinite;
+  display: none;
+}
+
+@keyframes authSpin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes authFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
